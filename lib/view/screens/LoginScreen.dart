@@ -18,7 +18,8 @@ class LoginScreen extends StatelessWidget {
               height: _DIMENS.WHITE_SPACING,
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(
+                  horizontal: _DIMENS.MARGIN_HORIZONTAL),
               child: TextInputField(
                 controller: _emailController,
                 myLabelText: "Email",
@@ -29,7 +30,8 @@ class LoginScreen extends StatelessWidget {
               height: _DIMENS.WHITE_SPACING,
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(
+                  horizontal: _DIMENS.MARGIN_HORIZONTAL),
               child: TextInputField(
                 controller: _passwordController,
                 myLabelText: "Password",
@@ -62,5 +64,4 @@ class LoginScreen extends StatelessWidget {
 abstract class _DIMENS {
   static const WHITE_SPACING = 30.0;
   static const MARGIN_HORIZONTAL = 20.0;
-  static const MARGIN_TOP = 100.0;
 }
