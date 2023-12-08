@@ -38,7 +38,7 @@ class AuthController extends GetxController {
 
   _setInitialView(User? user) {}
 
-  void SignUp(String name, String email, String password, File? image) async {
+  void signUp(String name, String email, String password, File? image) async {
     try {
       if (name.isNotEmpty &&
           email.isNotEmpty &&
