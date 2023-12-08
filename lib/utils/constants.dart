@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:insta_mvc_demo/view/screens/ProfileScreen.dart';
 
 getRandomColor() => [
       Colors.blueAccent,
@@ -14,3 +15,7 @@ var button = Colors.red[400];
 const borderColor = Colors.grey;
 
 var uid = FirebaseAuth.instance.currentUser!.uid;
+
+var pageIndex = [
+  ProfileScreen(uid: uid),
+];

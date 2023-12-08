@@ -3,14 +3,19 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:insta_mvc_demo/models/UserModel.dart';
+import 'package:insta_mvc_demo/view/screens/HomeScreen.dart';
+
+import '../view/screens/LoginScreen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
 
   File? profilePic;
+
   late Rx<User?> _user;
 
   User get user => _user.value!;
@@ -36,7 +41,13 @@ class AuthController extends GetxController {
     }
   }
 
-  _setInitialView(User? user) {}
+  _setInitialView(User? user) {
+    if (user == null) {
+      Get.offAll(LoginScreen());
+    } else {
+      Get.offAll(const HomeScreen());
+    }
+  }
 
   void signUp(String name, String email, String password, File? image) async {
     try {
@@ -80,11 +91,14 @@ class AuthController extends GetxController {
       final img = File(image!.path);
       profilePic = img;
     } catch (e) {
-      print("error during image pic---------${e}");
+      if (kDebugMode) {
+        print("error during image pic---------${e}");
+      }
     }
   }
 
   signOut() {
     FirebaseAuth.instance.signOut();
+    Get.offAll(LoginScreen());
   }
 }

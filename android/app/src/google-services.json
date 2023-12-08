@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "43342309223",
+    "project_id": "instagram-f77df",
+    "storage_bucket": "instagram-f77df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43342309223:android:8452fb630094fa9d3cb1c2",
+        "android_client_info": {
+          "package_name": "com.gaurav.insta_mvc_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7RrWlgYpBnV1hfAKTbPUjhoJrB2ZVZz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

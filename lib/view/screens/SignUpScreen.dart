@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:insta_mvc_demo/controller/AuthController.dart';
 import 'package:insta_mvc_demo/view/widgets/text_input.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+  SignUpScreen({super.key});
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _setPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+  final controller = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,9 @@ class SignUpScreen extends StatelessWidget {
                 height: _DIMENS.WHITE_SPACING,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  controller.pickImage();
+                },
                 child: const Stack(
                   children: [
                     CircleAvatar(
@@ -99,7 +105,14 @@ class SignUpScreen extends StatelessWidget {
                 height: _DIMENS.WHITE_SPACING,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.signUp(
+                    _usernameController.text,
+                    _emailController.text,
+                    _setPasswordController.text,
+                    controller.profilePic,
+                  );
+                },
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 50, vertical: 10),

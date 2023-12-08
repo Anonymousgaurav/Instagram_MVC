@@ -7,13 +7,13 @@ class TextInputField extends StatelessWidget {
   final String myLabelText;
   final bool toHide;
 
-  TextInputField({
-    Key? key,
+  const TextInputField({
+    super.key,
     required this.controller,
     required this.myIcon,
     required this.myLabelText,
     this.toHide = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
