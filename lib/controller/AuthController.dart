@@ -69,7 +69,9 @@ class AuthController extends GetxController {
         Get.snackbar('Error in creating user', 'please fill all blanks');
       }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       Get.snackbar("Error Occured", e.toString());
     }
   }

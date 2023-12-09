@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_mvc_demo/view/screens/ProfileScreen.dart';
+import 'package:insta_mvc_demo/view/screens/ScrollReelsScreen.dart';
+import 'package:insta_mvc_demo/view/screens/VideoAddScreen.dart';
 
 getRandomColor() => [
       Colors.blueAccent,
@@ -17,5 +19,9 @@ const borderColor = Colors.grey;
 var uid = FirebaseAuth.instance.currentUser!.uid;
 
 var pageIndex = [
+  ScrollReelsScreen(),
+  const VideoAddScreen(),
+  const VideoAddScreen(),
+  ProfileScreen(uid: uid),
   ProfileScreen(uid: uid),
 ];

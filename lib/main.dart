@@ -6,6 +6,7 @@ import 'package:insta_mvc_demo/view/screens/SignUpScreen.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
