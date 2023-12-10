@@ -4,9 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:insta_mvc_demo/models/UserModel.dart';
+import 'package:insta_mvc_demo/utils/CamUtils.dart';
 import 'package:insta_mvc_demo/view/screens/HomeScreen.dart';
 
 import '../view/screens/LoginScreen.dart';
@@ -14,11 +15,13 @@ import '../view/screens/LoginScreen.dart';
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
 
-  File? profilePic;
+  static File? profilePic;
 
   late Rx<User?> _user;
 
   User get user => _user.value!;
+
+  static RxString profileImage = "".obs;
 
   @override
   void onReady() {
@@ -72,7 +75,7 @@ class AuthController extends GetxController {
       if (kDebugMode) {
         print(e);
       }
-      Get.snackbar("Error Occured", e.toString());
+      Get.snackbar("Error Occurred", e.toString());
     }
   }
 
@@ -87,20 +90,27 @@ class AuthController extends GetxController {
     return imgDwnUrl;
   }
 
-  pickImage() async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      final img = File(image!.path);
-      profilePic = img;
-    } catch (e) {
+  signOut() {
+    FirebaseAuth.instance.signOut();
+    Get.offAll(LoginScreen());
+  }
+
+  static launchPicker(BuildContext context) async {
+    CamUtils.openSelector(context, _processSelectedImage);
+  }
+
+  static void _processSelectedImage(File? img) async {
+    if (img != null) {
+      updateProfile(img.path, img);
+    } else {
       if (kDebugMode) {
-        print("error during image pic---------${e}");
+        print('cancelledImage');
       }
     }
   }
 
-  signOut() {
-    FirebaseAuth.instance.signOut();
-    Get.offAll(LoginScreen());
+  static void updateProfile(String profileImg, File imgFile) {
+    profilePic = imgFile;
+    profileImage.value = profileImg;
   }
 }

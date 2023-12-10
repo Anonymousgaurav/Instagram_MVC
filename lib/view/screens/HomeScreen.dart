@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 5.0,
         type: BottomNavigationBarType.fixed,
         onTap: (index) {
           setState(() {
