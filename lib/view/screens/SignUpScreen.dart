@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:insta_mvc_demo/controller/AuthController.dart';
+import 'package:insta_mvc_demo/utils/DeviceUtils.dart';
+import 'package:insta_mvc_demo/view/styles/RegisterScreenStyles.dart';
 import 'package:insta_mvc_demo/view/widgets/text_input.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -44,7 +46,7 @@ class SignUpScreen extends StatelessWidget {
                       right: 4,
                       child: Icon(
                         Icons.edit,
-                        color: Colors.black,
+                        color: Colors.grey,
                       ),
                     )
                   ],
@@ -54,6 +56,21 @@ class SignUpScreen extends StatelessWidget {
                 height: _DIMENS.WHITE_SPACING,
               ),
               Container(
+                height: DeviceUtils.fractionHeight(context, fraction: 15.0),
+                margin: const EdgeInsets.symmetric(
+                    horizontal: _DIMENS.MARGIN_HORIZONTAL),
+                child: TextInputField(
+                  controller: _usernameController,
+                  myLabelText: "Username",
+                  myIcon: Icons.person,
+                  toHide: false,
+                ),
+              ),
+              const SizedBox(
+                height: _DIMENS.WHITE_SPACING,
+              ),
+              Container(
+                height: DeviceUtils.fractionHeight(context, fraction: 15.0),
                 margin: const EdgeInsets.symmetric(
                     horizontal: _DIMENS.MARGIN_HORIZONTAL),
                 child: TextInputField(
@@ -66,6 +83,7 @@ class SignUpScreen extends StatelessWidget {
                 height: _DIMENS.WHITE_SPACING,
               ),
               Container(
+                height: DeviceUtils.fractionHeight(context, fraction: 15.0),
                 margin: const EdgeInsets.symmetric(
                     horizontal: _DIMENS.MARGIN_HORIZONTAL),
                 child: TextInputField(
@@ -79,6 +97,7 @@ class SignUpScreen extends StatelessWidget {
                 height: _DIMENS.WHITE_SPACING,
               ),
               Container(
+                height: DeviceUtils.fractionHeight(context, fraction: 15.0),
                 margin: const EdgeInsets.symmetric(
                     horizontal: _DIMENS.MARGIN_HORIZONTAL),
                 child: TextInputField(
@@ -91,20 +110,9 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(
                 height: _DIMENS.WHITE_SPACING,
               ),
-              Container(
-                margin: const EdgeInsets.symmetric(
-                    horizontal: _DIMENS.MARGIN_HORIZONTAL),
-                child: TextInputField(
-                  controller: _usernameController,
-                  myLabelText: "Username",
-                  myIcon: Icons.person,
-                  toHide: false,
-                ),
-              ),
-              const SizedBox(
-                height: _DIMENS.WHITE_SPACING,
-              ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent),
                 onPressed: () {
                   controller.signUp(
                     _usernameController.text,
@@ -116,7 +124,10 @@ class SignUpScreen extends StatelessWidget {
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                  child: const Text("Register"),
+                  child: Text(
+                    "Register",
+                    style: RegisterScreenStyles.registerButton,
+                  ),
                 ),
               )
             ],

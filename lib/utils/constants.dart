@@ -14,7 +14,7 @@ getRandomColor() => [
 
 const bgColour = Colors.black;
 var button = Colors.red[400];
-const borderColor = Colors.grey;
+const borderColor = Colors.blueAccent;
 
 var uid = FirebaseAuth.instance.currentUser!.uid;
 

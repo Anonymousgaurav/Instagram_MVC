@@ -21,8 +21,13 @@ class TextInputField extends StatelessWidget {
       obscureText: toHide,
       controller: controller,
       decoration: InputDecoration(
-        icon: Icon(myIcon),
+        icon: Icon(
+          myIcon,
+          color: Colors.blueAccent,
+        ),
         labelText: myLabelText,
+
+        /// labelStyle: TextStyle(color: Colors.blueAccent),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(
