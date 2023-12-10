@@ -22,8 +22,6 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Obx(() {
-          final data = AuthController.profileImage;
-          print("Image>>>>> ${data}");
           return SingleChildScrollView(
             child: Container(
               alignment: Alignment.center,
@@ -159,9 +157,8 @@ abstract class _DIMENS {
   static const WHITE_SPACING = 30.0;
   static const MARGIN_HORIZONTAL = 20.0;
   static const MARGIN_TOP = 100.0;
-  static const double BIG_SPACING = 24.0;
-  static const double DISPLAY_H = 50.0;
-  static double BIG_WHITE_SPACING = 30.0;
-  static double PROFILE_IMAGE_WIDTH = 200.0;
-  static double PROFILE_IMAGE_HEIGHT = 200.0;
+  static const BIG_SPACING = 24.0;
+  static const DISPLAY_H = 50.0;
+  static const PROFILE_IMAGE_WIDTH = 200.0;
+  static const PROFILE_IMAGE_HEIGHT = 200.0;
 }
