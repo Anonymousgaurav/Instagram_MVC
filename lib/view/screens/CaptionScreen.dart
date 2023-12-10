@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:insta_mvc_demo/controller/UploadVideoController.dart';
+import 'package:insta_mvc_demo/utils/DeviceUtils.dart';
+import 'package:insta_mvc_demo/view/styles/LoginScreenStyles.dart';
 import 'package:insta_mvc_demo/view/widgets/text_input.dart';
 import 'package:video_player/video_player.dart';
-
-import '../../utils/constants.dart';
 
 class CaptionScreen extends StatefulWidget {
   final File videoFile;
@@ -26,6 +26,14 @@ class _CaptionScreenState extends State<CaptionScreen> {
 
   final videoController = Get.put(UploadVideoController());
 
+  uploadVid() {
+    uploadContent = Text(
+      "Please Wait..",
+      style: LoginScreenStyles.loginButton,
+    );
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
@@ -36,13 +44,6 @@ class _CaptionScreenState extends State<CaptionScreen> {
     videoPlayerController.play();
     videoPlayerController.setLooping(true);
     videoPlayerController.setVolume(0.9);
-  }
-
-  Widget uploadContent = const Text("Upload");
-
-  uploadVid() {
-    uploadContent = const Text("Please Wait..");
-    setState(() {});
   }
 
   @override
@@ -56,6 +57,9 @@ class _CaptionScreenState extends State<CaptionScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -63,23 +67,26 @@ class _CaptionScreenState extends State<CaptionScreen> {
               child: VideoPlayer(videoPlayerController),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 4,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextInputField(
-                      controller: songNameController,
-                      myIcon: Icons.music_note,
-                      myLabelText: "Song Name"),
+                  _textFieldContainer(
+                    TextInputField(
+                        controller: songNameController,
+                        myIcon: Icons.music_note,
+                        myLabelText: "Song Name"),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-                  TextInputField(
-                      controller: captionController,
-                      myIcon: Icons.closed_caption,
-                      myLabelText: "Caption"),
+                  _textFieldContainer(
+                    TextInputField(
+                        controller: captionController,
+                        myIcon: Icons.closed_caption,
+                        myLabelText: "Caption"),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -92,9 +99,10 @@ class _CaptionScreenState extends State<CaptionScreen> {
                         captionController.text,
                       );
                     },
-                    style: ElevatedButton.styleFrom(primary: button),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent),
                     child: uploadContent,
-                  )
+                  ),
                 ],
               ),
             )
@@ -103,4 +111,22 @@ class _CaptionScreenState extends State<CaptionScreen> {
       ),
     );
   }
+
+  Widget _textFieldContainer(Widget child) {
+    return Container(
+        height: DeviceUtils.fractionHeight(context, fraction: 15.0),
+        margin: const EdgeInsets.symmetric(
+          horizontal: _DIMENS.MARGIN_HORIZONTAL,
+        ),
+        child: child);
+  }
+}
+
+Widget uploadContent = Text(
+  "Upload",
+  style: LoginScreenStyles.loginButton,
+);
+
+abstract class _DIMENS {
+  static const MARGIN_HORIZONTAL = 30.0;
 }

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:insta_mvc_demo/utils/constants.dart';
 import 'package:insta_mvc_demo/view/screens/CaptionScreen.dart';
 
 class VideoAddScreen extends StatelessWidget {
@@ -18,7 +17,9 @@ class VideoAddScreen extends StatelessWidget {
           child: Container(
             width: 190,
             height: 50,
-            decoration: BoxDecoration(color: button),
+            decoration: const BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.all(Radius.circular(50.0))),
             child: const Center(
               child: Text(
                 "Upload Video",
