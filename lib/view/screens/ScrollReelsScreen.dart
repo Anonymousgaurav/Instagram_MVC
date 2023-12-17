@@ -4,6 +4,8 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:insta_mvc_demo/controller/NotificationController.dart';
 import 'package:insta_mvc_demo/controller/VideoController.dart';
+import 'package:insta_mvc_demo/view/screens/CommentsScreen.dart';
+import 'package:insta_mvc_demo/view/screens/ProfileScreen.dart';
 import 'package:insta_mvc_demo/view/widgets/video_player/ProfileImage.dart';
 import 'package:insta_mvc_demo/view/widgets/video_player/VideoPlayer.dart';
 
@@ -66,7 +68,14 @@ class ScrollReelsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ProfileScreen(
+                                              uid: data.uid,
+                                            )));
+                              },
                               child: ProfileImage(
                                 profilePhotoUrl: data.profilePic,
                               ),
@@ -77,10 +86,13 @@ class ScrollReelsScreen extends StatelessWidget {
                                 // notificationController.likeNotification(data.id);
                               },
                               child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     Icons.favorite,
-                                    size: 35,
+                                    size: 25,
                                     color: data.likes.contains(FirebaseAuth
                                             .instance.currentUser!.uid)
                                         ? Colors.pinkAccent
@@ -102,7 +114,7 @@ class ScrollReelsScreen extends StatelessWidget {
                                 children: [
                                   const Icon(
                                     Icons.reply,
-                                    size: 35,
+                                    size: 25,
                                     color: Colors.white,
                                   ),
                                   Text(
@@ -115,17 +127,17 @@ class ScrollReelsScreen extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             CommentScreen(id: data.id)));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CommentsScreen(id: data.id)));
                               },
                               child: Column(
                                 children: [
                                   const Icon(
                                     Icons.comment,
-                                    size: 35,
+                                    size: 25,
                                     color: Colors.white,
                                   ),
                                   Text(

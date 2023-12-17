@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:insta_mvc_demo/view/screens/NotificationScreen.dart';
 import 'package:insta_mvc_demo/view/screens/ProfileScreen.dart';
 import 'package:insta_mvc_demo/view/screens/ScrollReelsScreen.dart';
 import 'package:insta_mvc_demo/view/screens/VideoAddScreen.dart';
@@ -22,6 +23,6 @@ var pageIndex = [
   ScrollReelsScreen(),
   const VideoAddScreen(),
   const VideoAddScreen(),
-  ProfileScreen(uid: uid),
+  const NotificationScreen(),
   ProfileScreen(uid: uid),
 ];

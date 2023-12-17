@@ -1,6 +1,8 @@
 Model-----> Controller -----> View
 
 olymptradeforus@gmail.com
+sgaurav11@gmail.com
+qwerty
 
 version....
 

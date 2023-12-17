@@ -1,17 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class NotificationModel {
+class CommentsModel {
   String username;
-  String msg;
+  String comments;
   final datePub;
+  List likes;
   String profilePic;
   String uid;
   String id;
 
-  NotificationModel({
+  CommentsModel({
     required this.username,
-    required this.msg,
+    required this.comments,
     required this.datePub,
+    required this.likes,
     required this.profilePic,
     required this.uid,
     required this.id,
@@ -19,19 +21,21 @@ class NotificationModel {
 
   Map<String, dynamic> toJson() => {
         'username': username,
-        'msg': msg,
+        'comments': comments,
         'datePub': datePub,
+        'likes': likes,
         'profilePic': profilePic,
         'uid': uid,
-        'id': id
+        'id': id,
       };
 
-  static NotificationModel fromSnap(DocumentSnapshot snap) {
+  static CommentsModel fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
-    return NotificationModel(
+    return CommentsModel(
       username: snapshot['username'],
-      msg: snapshot['msg'],
+      comments: snapshot['comments'],
       datePub: snapshot['datePub'],
+      likes: snapshot['likes'],
       profilePic: snapshot['profilePic'],
       uid: snapshot['uid'],
       id: snapshot['id'],

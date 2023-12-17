@@ -144,13 +144,6 @@ class SignUpScreen extends StatelessWidget {
           );
         }));
   }
-
-  Widget _buildDisplay(BuildContext context, RxString image) {
-    return Container(
-        margin: const EdgeInsets.symmetric(vertical: _DIMENS.BIG_SPACING),
-        height: _DIMENS.DISPLAY_H,
-        child: Image.file(File(image.string)));
-  }
 }
 
 abstract class _DIMENS {

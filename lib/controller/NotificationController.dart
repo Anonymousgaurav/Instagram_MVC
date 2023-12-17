@@ -11,18 +11,22 @@ class NotificationController extends GetxController {
   List<NotificationModel> get notification => _notification.value;
 
   fetchNotifications() async {
-    _notification.bindStream(FirebaseFirestore.instance
-        .collection('User')
-        .doc(FirebaseAuth.instance.currentUser?.uid.toString())
-        .collection('notification')
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<NotificationModel> retVal = [];
-      for (var element in query.docs) {
-        retVal.add(NotificationModel.fromSnap(element));
-      }
-      return retVal;
-    }));
+    _notification.bindStream(
+      FirebaseFirestore.instance
+          .collection('User')
+          .doc(FirebaseAuth.instance.currentUser?.uid.toString())
+          .collection('notification')
+          .snapshots()
+          .map(
+        (QuerySnapshot query) {
+          List<NotificationModel> retVal = [];
+          for (var element in query.docs) {
+            retVal.add(NotificationModel.fromSnap(element));
+          }
+          return retVal;
+        },
+      ),
+    );
   }
 
   //TODO: check the flow of this method
