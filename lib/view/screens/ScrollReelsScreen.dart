@@ -29,7 +29,8 @@ class ScrollReelsScreen extends StatelessWidget {
               return InkWell(
                 onDoubleTap: () {
                   videoController.likedVideo(data.id);
-                  // notificationController.likeNotification(data.id);
+
+                  /// notificationController.likeNotification(data.id);
                 },
                 child: Stack(
                   children: [
@@ -52,7 +53,7 @@ class ScrollReelsScreen extends StatelessWidget {
                           ),
                           Text(
                             data.songName,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           )
                         ],
                       ),
@@ -148,12 +149,6 @@ class ScrollReelsScreen extends StatelessWidget {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Column(
-                                    children: [
-                                      // AlbumRotator(
-                                      //     profilePicUrl: data.profilePic)
-                                    ],
-                                  ),
                                 ],
                               ),
                             )
@@ -171,8 +166,8 @@ class ScrollReelsScreen extends StatelessWidget {
 
   Future<void> share(String vidId) async {
     await FlutterShare.share(
-      title: 'Download My TikTok Clone App',
-      text: 'Watch Intresting short videos On TikTok Clone',
+      title: 'Download App',
+      text: 'Watch Interesting short videos',
     );
     videoController.shareVideo(vidId);
   }
