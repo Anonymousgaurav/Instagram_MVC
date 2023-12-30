@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_mvc_demo/view/screens/NotificationScreen.dart';
 import 'package:insta_mvc_demo/view/screens/ProfileScreen.dart';
 import 'package:insta_mvc_demo/view/screens/ScrollReelsScreen.dart';
+import 'package:insta_mvc_demo/view/screens/SearchScreen.dart';
 import 'package:insta_mvc_demo/view/screens/VideoAddScreen.dart';
 
 getRandomColor() => [
@@ -21,7 +22,7 @@ var uid = FirebaseAuth.instance.currentUser!.uid;
 
 var pageIndex = [
   ScrollReelsScreen(),
-  const VideoAddScreen(),
+  SearchScreen(),
   const VideoAddScreen(),
   const NotificationScreen(),
   ProfileScreen(uid: uid),

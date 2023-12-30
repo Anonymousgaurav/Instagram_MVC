@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:insta_mvc_demo/controller/CommentsController.dart';
 import 'package:insta_mvc_demo/controller/NotificationController.dart';
 import 'package:timeago/timeago.dart' as tago;
 
@@ -64,11 +65,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     ),
                   ],
                 ),
-                // trailing: InkWell(
-                //     onTap: (){
-                //       commentController.likeComment(comment.id);
-                //     },
-                //     child: Icon(Icons.favorite , color : comment.likes.contains(FirebaseAuth.instance.currentUser!.uid) ? Colors.red : Colors.white)),
               );
             });
       }),
