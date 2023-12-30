@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Instagram',
 
-      /// theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: bgColour),
+      /// theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
       home: SignUpScreen(),
     );

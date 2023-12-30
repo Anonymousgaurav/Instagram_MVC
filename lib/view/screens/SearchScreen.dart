@@ -31,7 +31,7 @@ class SearchScreen extends StatelessWidget {
               searchController.searchUser(value);
             },
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.black12,
         ),
         body: searchController.searchedUsers.isEmpty
             ? const Center(
